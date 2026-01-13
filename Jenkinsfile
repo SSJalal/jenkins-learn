@@ -1,18 +1,13 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'node:18'
+    }
+  }
   stages {
     stage('checkout code') {
       steps {
         git(url: 'https://github.com/SSJalal/jenkins-learn', branch: 'main')
-      }
-    }
-
-    stage('install dependency') {
-      steps {
-        sh '''
-          curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-          apt-get install -y nodejs
-        '''
       }
     }
 
