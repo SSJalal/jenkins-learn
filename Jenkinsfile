@@ -3,15 +3,15 @@ pipeline {
   stages {
     stage('checkout code') {
       steps {
-        git(url: 'https://github.com/SSJalal/jenkins-learn', branch: 'dev')
+        git(url: 'https://github.com/SSJalal/jenkins-learn', branch: 'main')
       }
     }
 
-    stage('echo') {
+    stage('npm') {
       steps {
-        sh 'ls -a'
+        sh 'npm install'
+        sh 'npm test'
       }
     }
-
   }
 }
