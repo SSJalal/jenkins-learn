@@ -2,16 +2,18 @@ pipeline {
   agent {
     docker {
       image 'node:18'
+      reuseNode true
     }
   }
+
   stages {
-    stage('checkout code') {
+    stage('Checkout code') {
       steps {
-        git(url: 'https://github.com/SSJalal/jenkins-learn', branch: 'main')
+        checkout scm
       }
     }
 
-    stage('npm') {
+    stage('Install & Test') {
       steps {
         sh 'npm install'
         sh 'npm test'
